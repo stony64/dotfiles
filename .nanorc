@@ -1,0 +1,45 @@
+# Non-default settings
+set atblanks        # Zeilenumbruch an Leerzeichen erlauben.
+set cutfromcursor   # CTRL+K schneidet ab der Cursorposition bis zum Ende der Zeile.
+set softwrap        # Weiche Umbrueche in Zeilen aktivieren.
+set tabsize 4       # Tabulatorgroesse auf 4 setzen.
+set tabstospaces    # Tabulator durch Leerzeichen ersetzen.
+set speller "aspell -x -c"         # Legt fest, welches Rechtschreibprogramm verwendet wird.
+set constantshow    # Zeigt nuetzliche Informationen wie Zeilennummer und Position in der unteren Leiste an.
+# set linenumbers     # Zeilennummern aktivieren.
+set casesensitive   # Gross-/Kleinschreibung in Suchanfragen beachten.
+set historylog 100  # Speichert die letzten 100 Suchanfragen fuer spaetere Verwendung.
+set positionlog     # Speichert die Cursorposition zwischen Bearbeitungssitzungen.
+set zap             # Markierten Text (CTRL+SHIFT+PFEILTASTEN) loeschen mit Ruecktaste erlauben.
+set autoindent      # Eine neue Zeile hat die gleiche Anzahl von fuehrenden Leerzeichen wie die vorherige.
+set indicator       # Zeigt eine Scrollleiste auf der rechten Seite an, die die Position und Groesse des aktuellen Viewports anzeigt.
+set minibar         # Zeigt Dateiname und andere Informationen in der unteren Leiste an. Obere Leiste wird entfernt.
+set matchbrackets "(^|[[:space:]])((\[|\()[0-9a-z_!@#$%^&*-]+(\]|\)))"  # Hervorhebung von Klammern und Klammerpaaren
+set regexp           # Aktiviert die Verwendung von regulaeren Ausdruecken in Suchen und Ersetzen.
+set showcursor       # Zeigt die Position des Cursors in der Statusleiste an.
+set multibuffer      # Aktiviert die Verwendung von mehreren Pufferbereichen.
+set nowrap           # Deaktiviert das automatische Zeilenumbruch.
+
+include "/usr/share/nano/*.nanorc" # Aktiviert die Syntaxhervorhebung.
+
+# Aktivieren und Einstellen eines Arbeitsverzeichnisses fuer Backups
+set backup                        # Erstellt Backups der aktuellen Datei.
+set backupdir "~/.nano/backups/"  # Speicherort fuer Backups.
+
+# Tastenkombinationen
+bind ^C copy main       # STRG+C - Kopieren
+bind ^V paste all       # STRG+V - Einfuegen
+bind ^F whereis all     # STRG+F - Suchen
+bind ^S savefile main   # STRG+S - Speichern
+bind ^Q exit all        # STRG+Q - Nano beenden
+bind ^K cut all         # STRG+K - Ausschneiden
+
+# Farbdeklarationen
+set titlecolor brightwhite,magenta
+set keycolor white,blue
+set functioncolor normal,normal
+set numbercolor white,magenta
+set errorcolor brightwhite,red
+set selectedcolor black,white
+set stripecolor black,white
+set statuscolor black,white
