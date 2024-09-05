@@ -23,8 +23,8 @@ set nowrap           # Deaktiviert das automatische Zeilenumbruch.
 include "/usr/share/nano/*.nanorc" # Aktiviert die Syntaxhervorhebung.
 
 # Aktivieren und Einstellen eines Arbeitsverzeichnisses fuer Backups
-set backup                        # Erstellt Backups der aktuellen Datei.
-set backupdir "~/.nano/backups/"  # Speicherort fuer Backups.
+# set backup                        # Erstellt Backups der aktuellen Datei.
+# set backupdir "~/.nano/backups/"  # Speicherort fuer Backups.
 
 # Tastenkombinationen
 bind ^C copy main       # STRG+C - Kopieren
