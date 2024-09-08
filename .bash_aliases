@@ -5,7 +5,7 @@
 ####################################################
 
 # IPv6-Adresse abrufen
-alias ip6='curl --connect-timeout 5 ifconfig.co'
+alias ip4='curl --connect-timeout 5 ifconfig.co'
 
 # Verzeichnisbaum anzeigen, mit Verzeichnissen zuerst
 alias tree='tree -F --dirsfirst'

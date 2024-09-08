@@ -180,7 +180,6 @@ function bak() {
 
 # Fuehrt ein Systemupdate und bereinigt die Paketquellen, abhaengig vom Hostnamen.
 function au() {
-    clear
     local hostname=$(hostname)
     local header="Hostname: $hostname"
     local header_length=${#header}
@@ -201,6 +200,11 @@ function au() {
     printf "#%*s#\n" $((min_width - 2)) ""
     echo "$border"
     echo
+
+    if [[ -z "$hostname" ]]; then
+        echo "Hostname konnte nicht ermittelt werden."
+        return 1
+    fi
 
     if [ "$hostname" = "proxmoxis" ]; then
         apt update && apt upgrade && apt full-upgrade && apt clean && apt autoclean && apt autoremove && pveam update && updatedb && sync

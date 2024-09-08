@@ -12,13 +12,13 @@
 ####################################################
 
 # Aktiviert Readline, sodass keine zusaetzliche Eingabe bei Tastendruck erwartet wird.
-set keyseq-timeout 50
+set -o keyseq-timeout 50
 
 # Keine doppelten Zeilen in der History, loescht Duplikate oder Zeilen, die mit Leerzeichen beginnen.
 HISTCONTROL=ignoreboth:erasedupes
 
 # Ignoriert bestimmte Befehle in der History
-HISTIGNORE=${HISTIGNORE:+$HISTIGNORE:}'la:ll:lah:lat:;a:-:fg:bg:j:git +(s|si)*( ):rma:fol:.+(.):ps:ps -A:[bf]g:exit:mc:au:cd *'
+HISTIGNORE="${HISTIGNORE:+$HISTIGNORE:}'la:ll:lah:lat:;a:-:fg:bg:j:git +(s|si)*( ):rma:fol:.+(.):ps:ps -A:[bf]g:exit:mc:au:cd *'"
 
 # Historie an die Datei anhaengen, nicht ueberschreiben
 shopt -s histappend
@@ -37,10 +37,14 @@ shopt -s checkwinsize
 shopt -s globstar
 
 # `less` freundlicher fuer Nicht-Textdateien machen, siehe lesspipe(1)
-[ -x /usr/bin/lesspipe ] && eval "$(SHELL=/bin/sh lesspipe)"
+if [ -x /usr/bin/lesspipe ]; then
+    eval "$(SHELL=/bin/sh lesspipe)"
+fi
 
 # Variable setzen, die den chroot identifiziert (wird im Prompt unten verwendet)
-[ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ] && debian_chroot=$(cat /etc/debian_chroot)
+if [ -z "${debian_chroot:-}" ] && [ -r /etc/debian_chroot ]; then
+    debian_chroot=$(cat /etc/debian_chroot)
+fi
 
 ####################################################
 ###
@@ -51,7 +55,9 @@ shopt -s globstar
 # Konfiguriert die Shell-Prompts mit oder ohne Farben, je nach Terminalkapazitaet und Benutzerpraeferenzen.
 
 # Fancy Prompt setzen (ohne Farben, es sei denn, Farben werden gewuenscht)
-[[ "$TERM" == xterm-color || "$TERM" == *-256color ]] && color_prompt=yes
+case "$TERM" in
+    xterm-color|*-256color) color_prompt=yes;;
+esac
 
 # Fuer einen farbigen Prompt, wenn das Terminal dies unterstuetzt; standardmaessig deaktiviert
 force_color_prompt=yes
@@ -92,8 +98,12 @@ esac
 ####################################################
 
 # Laedt zusuetzliche Aliase und Funktionen aus separaten Dateien (~/.bash_aliases und ~/.bash_functions), falls vorhanden.
-[ -f ~/.bash_aliases ] && . ~/.bash_aliases
-[ -f ~/.bash_functions ] && . ~/.bash_functions
+if [ -f ~/.bash_aliases ]; then
+    . ~/.bash_aliases
+fi
+if [ -f ~/.bash_functions ]; then
+    . ~/.bash_functions
+fi
 
 # Aktiviert programmierbare Vervollstaendigung, falls verfuegbar und POSIX-Modus nicht aktiv ist.
 
@@ -104,3 +114,6 @@ if ! shopt -oq posix; then
         . /etc/bash_completion
     fi
 fi
+
+
+
