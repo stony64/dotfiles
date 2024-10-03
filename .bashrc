@@ -11,9 +11,6 @@
 ###
 ####################################################
 
-# Aktiviert Readline, sodass keine zusaetzliche Eingabe bei Tastendruck erwartet wird.
-set -o keyseq-timeout 50
-
 # Keine doppelten Zeilen in der History, loescht Duplikate oder Zeilen, die mit Leerzeichen beginnen.
 HISTCONTROL=ignoreboth:erasedupes
 
